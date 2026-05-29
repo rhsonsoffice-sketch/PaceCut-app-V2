@@ -8,7 +8,10 @@
     <string>We save your finished videos to your photo gallery.</string>
     <key>NSPhotoLibraryUsageDescription</key>
     <string>We access your photos and videos so you can select files to edit.</string>
-    <key>CFBundleDevelopmentRegion</key>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Location access is optional — only used if you choose to add location tags to your videos.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>We need microphone access to record audio with your videos.</string>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>
     <string>PaceCut AI</string>
