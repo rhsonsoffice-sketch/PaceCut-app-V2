@@ -10,6 +10,8 @@
 <string>We need access to your photo library to save and load videos</string>
 <key>NSPhotoLibraryAddUsageDescription</key>
 <string>We need access to save your edited videos to your library</string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>Location access is only used by internal libraries; no data is stored or shared</string>
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>
