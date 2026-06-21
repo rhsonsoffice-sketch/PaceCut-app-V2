@@ -5,8 +5,8 @@ environment:
 flutter: 3.22.0
 scripts:
 - flutter pub get
-- rm -rf ios
-- flutter create --platforms=ios .
+- rm -rf ios # DELETE YOUR BROKEN UPLOADED IOS FOLDER
+- flutter create --platforms=ios . # GENERATE PERFECT CLEAN IOS PROJECT
 - flutter build ios --release --no-codesign
 artifacts:
 - build/ios/ipa/*.ipa
