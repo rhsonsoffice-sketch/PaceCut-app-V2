@@ -71,6 +71,18 @@ onPressed: () => _runFeature('audio'),
 style: ElevatedButton.styleFrom(padding: const EdgeInsets.all(20), minimumSize: const Size(250, 60)),
 child: const Text('🎵 Trending Audio', style: TextStyle(fontSize: 18)),
 ),
+  const SizedBox(height: 20),
+),
+
+// ✅ EXPORT & SHARE — NEW BUTTONS
+const Text('💾 EXPORT & SHARE', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+const SizedBox(height: 10),
+_featureButton('💾 Save 1080p HD', _export1080),
+_featureButton('💾 Save 4K UHD (PREMIUM)', _export4K),
+_featureButton('📤 Share to TikTok / Reels', _shareDirect),
+const SizedBox(height: 30),
+
+if (_isProcessing) ...[
 
 if (_isProcessing) ...[
 const SizedBox(height: 40),
@@ -129,6 +141,14 @@ _showMessage('❌ Error: $e');
 } finally {
 setState(() => _isProcessing = false);
 }
+}
+// ✅ EXPORT FUNCTIONS — MUST ADD THESE
+void _export1080() => _checkLimit(() => FfmpegService.instance.exportHD(_selectedVideoPath!, is4K: false));
+void _export4K() => _checkLimit(() => FfmpegService.instance.exportHD(_selectedVideoPath!, is4K: true));
+void _shareDirect() => _checkLimit(() => FfmpegService.instance.exportAndShare(_selectedVideoPath!));
+
+void _showMessage(String text) {
+ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
 }
 
 void _showMessage(String text) {
