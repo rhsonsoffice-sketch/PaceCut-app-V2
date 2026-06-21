@@ -7,26 +7,28 @@ environment:
 flutter: 3.22.0
 xcode: latest
 cocoapods: default
-
-triggering:
-events:
-- push
-branch_patterns:
-- pattern: main
-include: true
+vars:
+XCODE_WORKSPACE: "ios/Runner.xcworkspace"
+XCODE_SCHEME: "Runner"
 
 scripts:
-- name: Fix iOS folder + get deps
+- name: Get dependencies
 script: |
 flutter config --no-analytics
 flutter pub get
-rm -rf ios # DELETE YOUR BROKEN UPLOADED IOS FOLDER — MUST HAVE
-flutter create --platforms=ios . # MAKE FRESH, PERFECT IOS PROJECT — MUST HAVE
 
-- name: Build iOS Release
+- name: Install pods
+script: |
+cd ios
+pod install --repo-update
+cd ..
+
+- name: Build iOS
 script: |
 flutter build ios --release --no-codesign --verbose
 
 artifacts:
 - build/ios/ipa/*.ipa
 - /tmp/xcodebuild_logs/*.log
+
+
